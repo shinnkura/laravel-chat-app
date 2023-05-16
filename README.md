@@ -8,4 +8,8 @@
 
 4 `composer create-project --prefer-dist laravel/laravel laravel-project "10.*"`
 
+5 `cd laravel-project`
+
+6 `chown www-data storage/ -R`
+
 5 `ブラウザでwelcomeページ表示 -> localhost:8000`
