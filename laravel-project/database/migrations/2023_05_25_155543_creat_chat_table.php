@@ -11,12 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-       Schema::create('chat', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->string('completed')->default('false');
-            $table->timestamps();
-        });
+       //
     }
 
     /**
