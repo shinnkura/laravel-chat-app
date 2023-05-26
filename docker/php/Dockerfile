@@ -11,6 +11,10 @@ RUN php composer-setup.php
 RUN php -r "unlink('composer-setup.php');"
 RUN mv composer.phar /usr/local/bin/composer
 
+# Install Node.js
+RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN apt-get install -y nodejs
+
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
 ENV COMPOSER_HOME /composer
