@@ -18,3 +18,7 @@ Route::get('/', function () {
 });
 
 Route::resource('messages', 'MessageController');
+
+Route::get('/chat',function(){
+    return view('chat');
+});

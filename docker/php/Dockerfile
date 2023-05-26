@@ -11,7 +11,7 @@ RUN php composer-setup.php
 RUN php -r "unlink('composer-setup.php');"
 RUN mv composer.phar /usr/local/bin/composer
 
-# Install Node.js
+# Install Node.js and npm
 RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
 RUN apt-get install -y nodejs
 
@@ -25,3 +25,11 @@ ENV PATH $PATH:/composer/vendor/bin
 WORKDIR /var/www
 
 RUN composer global require "laravel/installer"
+
+# Run npm install and npm run dev in Laravel project
+# You should replace "laravel-project" with your actual Laravel project directory
+WORKDIR /var/www/laravel-project
+# RUN npm install
+# RUN npm run dev
+RUN apt-get update
+RUN apt-get install -y nodejs npm
