@@ -1,11 +1,12 @@
 FROM php:8.2-fpm
 COPY php.ini /usr/local/etc/php/
+EXPOSE 5173
 
 RUN apt-get update \
   && apt-get install -y zlib1g-dev mariadb-client vim libzip-dev \
   && docker-php-ext-install zip pdo_mysql
 
-#Composer install
+# Composer installation
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 RUN php composer-setup.php
 RUN php -r "unlink('composer-setup.php');"
@@ -21,15 +22,19 @@ ENV COMPOSER_HOME /composer
 
 ENV PATH $PATH:/composer/vendor/bin
 
-
 WORKDIR /var/www
 
-RUN composer global require "laravel/installer"
+# RUN composer global require "laravel/installer"
 
-# Run npm install and npm run dev in Laravel project
-# You should replace "laravel-project" with your actual Laravel project directory
+# RUN apt-get update \
+#   && apt-get -y install \
+#   git \
+#   zip \
+#   unzip \
+#   vim \
+#   && docker-php-ext-install pdo_mysql bcmath
+
 WORKDIR /var/www/laravel-project
-# RUN npm install
-# RUN npm run dev
-RUN apt-get update
-RUN apt-get install -y nodejs npm
+
+# COPY --from=node:16 /usr/local/bin /usr/local/bin
+# COPY --from=node:16 /usr/local/lib /usr/local/lib
