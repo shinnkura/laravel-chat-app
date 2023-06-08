@@ -8,8 +8,10 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-<chat-component>Hello World, Laravel!</chat-component>
-<div id="test">
-    <template></template>
+<!-- <chat-component>Hello World, Laravel!</chat-component> -->
+<div id="app">
+    <!-- <template></template> -->
+    <!-- <chat-component></chat-component> -->
+    <example-component></example-component>
 </body>
 </html>

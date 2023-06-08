@@ -6,26 +6,39 @@ export default defineConfig({
     plugins: [
         laravel({
             input: [
-                'resources/sass/app.scss',
+                'resources/sass/app.css',
                 'resources/js/app.js',
             ],
             refresh: true,
         }),
         vue({
-            template: {
-                transformAssetUrls: {
-                    base: null,
-                    includeAbsolute: false,
-                },
-            },
+            // template: {
+            //     transformAssetUrls: {
+            //         base: null,
+            //         includeAbsolute: false,
+            //     },
+            // },
         }),
     ],
     resolve: {
         alias: {
             vue: 'vue/dist/vue.esm-bundler.js',
         },
-        server: {
-            host: true,
-        }
+    },
+    root: './resources/js',
+    build: {
+        outDir: '../public/assets',
+        emptyOutDir: true,
+        manifest: true,
+        rollupOptions: {
+            input: '/main.js'
+        },
+    },
+    server: {
+        open: false,
+        host: true,
+        hmr: {
+            host: 'localhost'
+        },
     },
 });
